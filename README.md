@@ -1,24 +1,23 @@
-# vue-todo
+## Vue Todo
 
-## Project setup
-```
-npm install
-```
+A simple Todo application built with Vue. 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+#### Screenshot
+![enter image description here](https://raw.githubusercontent.com/oluwaseye/vue-todo/master/todo.png)
+#### Install Dependencies
 
-### Compiles and minifies for production
-```
-npm run build
-```
+    npm install
+#### Compiles and hot-reloads for development
 
-### Lints and fixes files
+    npm run serve
+#### Compiles and minifies for production
+
+    npm run build
+    
+#### Lints and fixes files
 ```
 npm run lint
 ```
 
-### Customize configuration
+#### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
