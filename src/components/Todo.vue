@@ -6,23 +6,20 @@
       <h2>Todos</h2>
     </div>
   </div>
-  <div class="row mb-4">
-    <div class="col-md-12"> 
-          <table>
-            <tr v-for="todo in sortedToDos" v-bind:key="todo.index">
-              <td><span :class="{todoDone:todo.done}">{{todo.text}}</span></td>
-              <td>
-                <button @click="toggleDone(todo)"  class="btn btn-secondary btn-sm">
-                  <span v-if="todo.done">
-                  Incomplete
-                  </span>
-                  <span v-else>
-                  <i data-feather="circle"></i> Done
-                  </span>
+  <div class="row mb-2 px-3 py-1" v-for="todo in sortedToDos" v-bind:key="todo.index">
+    <div class="col-md-7 text-left"> 
+            <span :class="{todoDone:todo.done}">{{todo.text}}</span> 
+    </div>
+    <div class="col-md-5"> 
+                <div class="d-flex justify-content-end">
+                  <button @click="toggleDone(todo)"  class="btn btn-sm float-right" v-bind:class="{ 'btn-warning': todo.done, 'btn-success': !todo.done}">
+                  <span v-if="todo.done">Mark Incomplete</span>
+                  <span v-else><i data-feather="circle"></i> Mark as Complete</span>
                 </button>
-              </td>
-            </tr>
-          </table> 
+                <button class="btn btn-danger btn-md rounded-circle ml-3 font-weight-bold" title="Delete Todo"  @click="deleteToDo(todo.id)">
+                  X
+                </button>
+                </div>
     </div>
   </div>
 
@@ -64,13 +61,18 @@ export default {
       if(this.todoText === '') return;
       this.todos.unshift({
         text:this.todoText,
-        done:false
+        done:false,
+        id: Date.now()
       });
       this.todoText = '';
     },
     toggleDone(todo) {
       todo.done = !todo.done;
-    }
+    },
+    deleteToDo(id){
+      this.todos = this.todos.filter(todo => todo.id !== id)
+    },
+ 
   }
 }
 </script>
